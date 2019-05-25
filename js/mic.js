@@ -60,7 +60,6 @@ if (navigator.mediaDevices.getUserMedia) {
                     source = context.createMediaStreamSource(stream);
                     //connect source to the analyser
                     source.connect(analyser);
-                    setInterval(getDataNew, 10); //1000/60 ≈ 16
                     micLoaded = true;
                 }).catch( function(err) { console.log('The following gUM error occured: ' + err);})
     }).catch( function(err) { console.log('The following error occured: ' + err);})

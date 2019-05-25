@@ -21,25 +21,25 @@ document.addEventListener("keydown", function (event) {
         layerKey = 8;
     else if(keypress == 9)
         layerKey = 9;
-    else if(keypress == "Q")
+    else if(keypress === "Q")
         colourKey = 1;
-    else if(keypress == "A")
+    else if(keypress === "A")
         colourKey = 2;
-    else if(keypress == "Z")
+    else if(keypress === "Z")
         colourKey = 3;
-    else if(keypress == "W")
+    else if(keypress === "W")
         colourKey = 4;
-    else if(keypress == "S")
+    else if(keypress === "S")
         colourKey = 5;
-    else if(keypress == "X")
+    else if(keypress === "X")
         colourKey = 6;
-    else if(keypress == "E")
+    else if(keypress === "E")
         colourKey = 7;
-    else if(keypress == "D")
+    else if(keypress === "D")
         colourKey = 8;
-    else if(keypress == "C")
+    else if(keypress === "C")
         colourKey = 9;
 
     console.log("colour mode: " + colourKey + "\nlayer mode: " + layerKey);
-})
+});
 
