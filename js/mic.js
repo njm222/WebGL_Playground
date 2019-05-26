@@ -29,12 +29,26 @@ if (navigator.mediaDevices.getUserMedia === undefined) {
 if (navigator.mediaDevices.getUserMedia) {
     console.log('getUserMedia supported.');
     navigator.mediaDevices.enumerateDevices().then((devices) => {
-        devices = devices.filter((d) => d.kind === 'audiooutput');
         console.log(devices);
-        let constraints = {audio: {deviceId: 'default'}};
+        /*devices = devices.filter((d) => d.kind === 'audiooutput');*/
+        let constraints = {video: true, audio: {deviceId: 'default'}};
         navigator.mediaDevices.getUserMedia (constraints)
             .then(
                 function(stream) { console.log(stream);
+                    let videoSettings = stream.getVideoTracks()[0].getSettings();
+                    let video = document.createElement("video");
+                    Object.assign(video, {
+                        srcObject: stream,
+                        height: videoSettings.height,
+                        width: videoSettings.width,
+                        autoplay: true
+                    });
+                    document.getElementById('main-container').appendChild(video);
+                    let videoTexture = new THREE.VideoTexture(video);
+                    videoTexture.minFilter = THREE.LinearFilter;
+
+                    video = document.getElementById( 'video' );
+                    let texture = new THREE.VideoTexture( video );
                     //Creates the context
                     if(typeof AudioContext !== "undefined"){
                         context = new AudioContext();
