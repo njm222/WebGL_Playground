@@ -62,7 +62,7 @@ window.addEventListener('resize', re => {
 });
 
 /* Experiment 3 Code */
-/*let prevThetaS = 0;
+let prevThetaS = 0;
 let prevThetaL = Math.PI/4;
 let sphereGeo = new THREE.SphereBufferGeometry(1000, 3, 32, 0, Math.PI*2, prevThetaS, prevThetaL);
 let sphereMaterial = new THREE.MeshPhongMaterial({color: 0xffff00, side: THREE.DoubleSide});
@@ -71,12 +71,12 @@ let sphere = new THREE.Mesh(sphereGeo, sphereMaterial);
 sphere.position.set(0, 0, -window.innerHeight/3);
 sphere.rotation.set(Math.PI/6, 0, 0);
 
-light_1.target = sphere;*/
+light_1.target = sphere;
 light_1.position.set(0, window.innerHeight/4, 0);
 camera.position.set(0, window.innerWidth*2.1, 0);
 
-/*scene.add(sphere);
-scene.add(light_2);*/
+scene.add(sphere);
+scene.add(light_2);
 
 function experiment3Loop() {
 
@@ -291,7 +291,6 @@ function experiment3Loop() {
 }
 
 /* Experiment 2 Code */
-/*
 scene.add(boxPlane);
 light_1.target = boxPlane;
 scene.add(boxPlaneRoof);
@@ -299,13 +298,9 @@ var aa = 0;
 
 let switchPlane = false;
 let switchRotation = true;
-*/
 
 function experiment2Loop() {
 
-    if(midsAv-(midsDeviation*midsFactor*1.5) > kickArr[kickArrCounter] || midsArr[midsArrCounter] > midsAv+(midsDeviation*midsFactor)) {
-        changeColour(boxPlane, colour);
-    }
     for(let i = 0; i < boxGeo.vertices.length; i++) {
         boxGeo.vertices[i].z = 0;
         boxRoofGeo.vertices[i].z = 0;
@@ -693,10 +688,6 @@ function changeColour(currShape, currColour) {
 }
 
 
-let 
-
-
-
 let start = 0;
 let wait = 0;
 let interval;
@@ -707,19 +698,19 @@ let run = function () {
     if(micLoaded && wait > 50) {
         getDataNew();
 
-        /*setColour();*/
+        setColour();
 
         /* Experiment Code */
         //experiment1Loop();
-        /*experiment2Loop();
-        experiment3Loop();*/ //maybe try set interval here
+        experiment2Loop();
+        experiment3Loop(); //maybe try set interval here
 
     } else {
         console.log("loading mic data")
     }
 
-    /*changeCameraRotation();
-    changeCameraZoom();*/
+    changeCameraRotation();
+    changeCameraZoom();
 
     camera.updateProjectionMatrix();
     controls.update();

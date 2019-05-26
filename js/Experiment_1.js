@@ -1,5 +1,4 @@
 //Triangle Grid Experiment
-/*
 let planeGeo = new THREE.PlaneGeometry(window.innerWidth, window.innerHeight, Math.sqrt(fftSize-10), Math.sqrt(fftSize-10));
 let planeMaterial = new THREE.MeshLambertMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
 let plane = new THREE.Mesh(planeGeo, planeMaterial);
@@ -26,7 +25,6 @@ boxPlaneRoof.position.set(0, window.innerWidth*1.5, -window.innerHeight/1.3);
 boxPlaneRoof.rotation.set(Math.PI/6, 0, 0);
 boxPlaneRoof.receiveShadow = true;
 boxPlaneRoof.wireframe = true;
-*/
 
 
 
