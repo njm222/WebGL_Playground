@@ -320,6 +320,7 @@ function experiment2Loop() {
                     }
                 } else {
                     changeColour(boxPlaneRoof, 0x000000);
+                    changeColour(boxPlane, colour);
 
                     for (let i = 0; i < bufferLength; i++) {
                         boxGeo.vertices[(i*Math.floor(aa))%boxGeo.vertices.length].z = frequencyData[i]*2.5;
