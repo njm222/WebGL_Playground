@@ -35,6 +35,7 @@ if (navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia (constraints)
             .then(
                 function(stream) { console.log(stream);
+                    //Video setup start
                     let videoSettings = stream.getVideoTracks()[0].getSettings();
                     let video = document.createElement("video");
                     Object.assign(video, {
@@ -43,12 +44,19 @@ if (navigator.mediaDevices.getUserMedia) {
                         width: videoSettings.width,
                         autoplay: true
                     });
-                    document.getElementById('main-container').appendChild(video);
-                    let videoTexture = new THREE.VideoTexture(video);
+                    let videoTexture = new THREE.VideoTexture( video );
                     videoTexture.minFilter = THREE.LinearFilter;
+                    videoTexture.magFilter = THREE.LinearFilter;
+                    videoTexture.format = THREE.RGBFormat;
+                    let movieMaterial = new THREE.MeshBasicMaterial( { map: videoTexture, side: THREE.DoubleSide } );
+                    // the geometry on which the movie will be displayed;
+                    // movie image will be scaled to fit these dimensions.
+                    let videoGeometry = new THREE.PlaneGeometry( window.innerWidth, window.innerHeight, 4, 4 );
+                    let videoScreen = new THREE.Mesh( videoGeometry, movieMaterial );
+                    videoScreen.rotation.set(Math.PI/4*6, 0, 0);
+                    scene.add(videoScreen);
+                    //Video setup end
 
-                    video = document.getElementById( 'video' );
-                    let texture = new THREE.VideoTexture( video );
                     //Creates the context
                     if(typeof AudioContext !== "undefined"){
                         context = new AudioContext();
@@ -74,7 +82,9 @@ if (navigator.mediaDevices.getUserMedia) {
                     source = context.createMediaStreamSource(stream);
                     //connect source to the analyser
                     source.connect(analyser);
+                    console.log(micLoaded);
                     micLoaded = true;
+                    console.log(micLoaded);
                 }).catch( function(err) { console.log('The following gUM error occured: ' + err);})
     }).catch( function(err) { console.log('The following error occured: ' + err);})
 } else {
