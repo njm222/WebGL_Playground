@@ -17,7 +17,7 @@ A sphere being generated and manipulated by live sound data captured from the cl
 
 ## Deployment
 
-https://github.com/njm222
+https://njm222.github.io/WebGL_Playground/
 
 ## Built With
 
